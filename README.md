@@ -13,7 +13,7 @@ One Omarchy theme. Twelve color palettes. Change the wallpaper and the desktop c
 Automatic color switching requires a small background service that watches wallpaper changes and applies the matching palette while Neon Glow is selected. The command below installs both the theme and this service:
 
 ```sh
-omarchy theme install https://github.com/ejuro/omarchy-neon-glow-theme && bash ~/.config/omarchy/themes/neon-glow/install.sh
+omarchy theme install https://github.com/erikrjohansson/omarchy-neon-glow-theme && bash ~/.config/omarchy/themes/neon-glow/install.sh
 ```
 
 **Already installed the theme?** Run this once to install the background service and enable automatic color switching:
