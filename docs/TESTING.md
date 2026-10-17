@@ -2,7 +2,7 @@
 
 ## Supported environment
 
-The release was prepared and tested on Arch Linux with Omarchy **4.0.0.alpha / Quattro**, its Quickshell-based Omarchy Shell, systemd user services, and Python 3.14. The installer requires Python 3.11 or newer and checks for the Omarchy Shell and theme-generation commands before changing anything.
+The release was prepared and tested on Arch Linux with Omarchy **4.0.4 / Quattro**, its Quickshell-based Omarchy Shell, systemd user services, and Python 3.14. The installer requires Python 3.11 or newer and checks for the Omarchy Shell and theme-generation commands before changing anything.
 
 This is not an Omarchy 3 / Waybar theme package. Compatibility with other Omarchy 4 builds depends on their theme and shell APIs. Application configs are regenerated from the recipient's installed templates to reduce version coupling.
 
@@ -18,7 +18,7 @@ Run from the repository root:
 /usr/bin/python integration/test_stock_nvim.py
 ```
 
-The first test suite covers all 24 wallpaper mappings, compatibility with the old wallpaper filenames, all 12 palettes, black backgrounds, hue matching, readable foreground/ANSI contrast, config parsing, theme isolation, selection races, shell-reload recovery, and follower restart behavior. It also exercises Linux file-change notifications, checks that the watcher sleeps while idle, and verifies switching away and back and replacing the theme directory.
+The first test suite covers all 7 wallpaper mappings, old logo wallpaper names, the fallback for the removed Blue, Blue & Yellow, Ultraviolet, Ruby Red and Vaporwave wallpapers, compatibility with the old wallpaper filenames, all 7 palettes, near-neutral dark backgrounds, neutral text with the accent in its nearest slot, readable foreground/ANSI contrast, config parsing, theme isolation, selection races, shell-reload recovery, and follower restart behavior. It also exercises Linux file-change notifications, checks that the watcher sleeps while idle, and verifies switching away and back and replacing the theme directory.
 
 The installation test creates a temporary Git repository and home directory. It uses the real Omarchy Git installer, staging logic, and theme generator. The systemd CLI is simulated so the test cannot start or stop the user's services. It checks setup, all generated palettes, reinstall, local template overrides, failed-update handling, and repeated uninstall. User app configurations are sentinel files checked for byte-for-byte preservation.
 
