@@ -1,12 +1,12 @@
 [lock]
-background       = "#000000"
-background-alpha = 1.0
-text             = "#a5ff8a"
-placeholder      = "#d4ffc7"
-text-error       = "#9eff81"
+background       = "#0b110a"
+background-alpha = 0.95
+text             = "#c9cbc8"
+placeholder      = "#727f6f"
+text-error       = "#eb817f"
 border           = "hyprland.active-border"
 border-active    = "hyprland.active-border"
-border-error     = "#9eff81"
+border-error     = "#eb817f"
 border-alpha     = 1.0
-selection        = "#91ff70"
+selection        = "#83ce6e"
 selection-alpha  = 0.45

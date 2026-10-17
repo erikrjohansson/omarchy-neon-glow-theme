@@ -2,55 +2,55 @@
 
 .theme-dark, .theme-light {
   /* Core colors */
-  --background-primary: #000000;
-  --background-primary-alt: #000000;
-  --background-secondary: #000000;
-  --background-secondary-alt: #000000;
-  --text-normal: #ffe2db;
+  --background-primary: #160d0a;
+  --background-primary-alt: #160d0a;
+  --background-secondary: #160d0a;
+  --background-secondary-alt: #160d0a;
+  --text-normal: #cec9c8;
 
   /* Selection colors */
-  --text-selection: #472a23;
+  --text-selection: #57342b;
 
   /* Border color */
-  --background-modifier-border: #a08b86;
+  --background-modifier-border: #8c7671;
 
   /* Semantic heading colors */
-  --text-title-h1: #ffa38d;
-  --text-title-h2: #ff967e;
-  --text-title-h3: #ffb3a2;
-  --text-title-h4: #ffa995;
-  --text-title-h5: #ffbcac;
-  --text-title-h6: #ffbcac;
+  --text-title-h1: #eb817f;
+  --text-title-h2: #b1c29a;
+  --text-title-h3: #e6d17f;
+  --text-title-h4: #9da3c5;
+  --text-title-h5: #d49cb8;
+  --text-title-h6: #d49cb8;
 
   /* Links and accents */
-  --text-link: #ffa995;
-  --text-accent: #ff967e;
-  --text-accent-hover: #ff967e;
-  --interactive-accent: #ff967e;
-  --interactive-accent-hover: #ff967e;
+  --text-link: #9da3c5;
+  --text-accent: #ff977f;
+  --text-accent-hover: #ff977f;
+  --interactive-accent: #ff977f;
+  --interactive-accent-hover: #ff977f;
 
   /* Muted text */
-  --text-muted: color-mix(in srgb, #ffe2db 70%, transparent);
-  --text-faint: color-mix(in srgb, #ffe2db 55%, transparent);
+  --text-muted: color-mix(in srgb, #cec9c8 70%, transparent);
+  --text-faint: color-mix(in srgb, #cec9c8 55%, transparent);
 
   /* Code */
-  --code-normal: #ffc8bc;
+  --code-normal: #98c2c6;
 
   /* Errors and success */
-  --text-error: #ffa38d;
-  --text-error-hover: #ffa38d;
-  --text-success: #ff967e;
+  --text-error: #eb817f;
+  --text-error-hover: #eb817f;
+  --text-success: #b1c29a;
 
   /* Tags */
-  --tag-color: #ffc8bc;
-  --tag-background: #472a23;
+  --tag-color: #98c2c6;
+  --tag-background: #57342b;
 
   /* Graph */
-  --graph-line: #a08b86;
-  --graph-node: #ff967e;
-  --graph-node-focused: #ffa995;
-  --graph-node-tag: #ffc8bc;
-  --graph-node-attachment: #ff967e;
+  --graph-line: #8c7671;
+  --graph-node: #ff977f;
+  --graph-node-focused: #9da3c5;
+  --graph-node-tag: #98c2c6;
+  --graph-node-attachment: #b1c29a;
 }
 
 /* Headers */
@@ -63,16 +63,16 @@
 
 /* Code blocks */
 .markdown-rendered code {
-  color: #ffc8bc;
+  color: #98c2c6;
 }
 
 /* Syntax highlighting */
-.cm-s-obsidian span.cm-keyword { color: #ffa38d; }
-.cm-s-obsidian span.cm-string { color: #ff967e; }
-.cm-s-obsidian span.cm-number { color: #ffb3a2; }
-.cm-s-obsidian span.cm-comment { color: #a08b86; }
-.cm-s-obsidian span.cm-operator { color: #ffa995; }
-.cm-s-obsidian span.cm-def { color: #ffa995; }
+.cm-s-obsidian span.cm-keyword { color: #eb817f; }
+.cm-s-obsidian span.cm-string { color: #b1c29a; }
+.cm-s-obsidian span.cm-number { color: #e6d17f; }
+.cm-s-obsidian span.cm-comment { color: #8c7671; }
+.cm-s-obsidian span.cm-operator { color: #9da3c5; }
+.cm-s-obsidian span.cm-def { color: #9da3c5; }
 
 /* Links */
 .markdown-rendered a {
@@ -81,7 +81,7 @@
 
 /* Blockquotes */
 .markdown-rendered blockquote {
-  border-left-color: #ff967e;
+  border-left-color: #ff977f;
 }
 
 /* Active elements */
@@ -100,6 +100,6 @@
 
 /* Filled actions need dark ink on the luminous accent. */
 .theme-dark, .theme-light {
-  --text-on-accent: #000000;
-  --text-on-accent-inverted: #000000;
+  --text-on-accent: #160d0a;
+  --text-on-accent-inverted: #160d0a;
 }

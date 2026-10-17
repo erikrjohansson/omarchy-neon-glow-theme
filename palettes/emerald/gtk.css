@@ -1,17 +1,17 @@
 /* Neon Glow — Emerald — GTK palette */
-@define-color background #000000;
-@define-color raised_background #0a0a0a;
-@define-color dark_background #000000;
-@define-color darker_background #000000;
-@define-color lighter_background #141414;
-@define-color foreground #e0ffd7;
-@define-color interface_foreground #a5ff8a;
-@define-color dark_foreground #8bac81;
-@define-color accent #91ff70;
-@define-color accent_light #b2ff9b;
-@define-color pale_yellow #b0ff98;
-@define-color error_red #a9ff8f;
-@define-color error_red_light #9eff81;
+@define-color background #0b110a;
+@define-color raised_background #151b14;
+@define-color dark_background #080d08;
+@define-color darker_background #060805;
+@define-color lighter_background #191f17;
+@define-color foreground #c9cbc8;
+@define-color interface_foreground #c9cbc8;
+@define-color dark_foreground #868a85;
+@define-color accent #83ce6e;
+@define-color accent_light #a8dd9a;
+@define-color pale_yellow #e6d17f;
+@define-color error_red #653e39;
+@define-color error_red_light #eb817f;
 
 /* Window chrome */
 @define-color window_bg_color @background;
@@ -24,14 +24,14 @@
 @define-color view_backdrop_color @background;
 
 /* Sidebar (places list) */
-@define-color sidebar_bg_color @raised_background;
-@define-color sidebar_fg_color @interface_foreground;
-@define-color sidebar_backdrop_color @raised_background;
+@define-color sidebar_bg_color @dark_background;
+@define-color sidebar_fg_color @foreground;
+@define-color sidebar_backdrop_color @dark_background;
 @define-color sidebar_border_color alpha(@foreground, 0.10);
 @define-color sidebar_shade_color rgba(0, 0, 0, 0.25);
-@define-color secondary_sidebar_bg_color @raised_background;
-@define-color secondary_sidebar_fg_color @interface_foreground;
-@define-color secondary_sidebar_backdrop_color @raised_background;
+@define-color secondary_sidebar_bg_color @dark_background;
+@define-color secondary_sidebar_fg_color @foreground;
+@define-color secondary_sidebar_backdrop_color @dark_background;
 @define-color secondary_sidebar_border_color alpha(@foreground, 0.10);
 @define-color secondary_sidebar_shade_color rgba(0, 0, 0, 0.25);
 
@@ -132,7 +132,7 @@ button {
   text-shadow: none;
 }
 button:hover { background-color: @lighter_background; }
-button:active, button:checked { background-color: #29471f; }
+button:active, button:checked { background-color: #2d4626; }
 button:focus { outline-color: @accent; }
 button.suggested-action {
   background-color: @accent;
@@ -163,5 +163,5 @@ check:checked, radio:checked, switch:checked {
   background-color: @accent;
   border-color: @accent;
 }
-selection { background-color: #29471f; color: @foreground; }
+selection { background-color: #2d4626; color: @foreground; }
 check, radio { background-image: none; }

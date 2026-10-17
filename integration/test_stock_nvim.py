@@ -20,7 +20,7 @@ def main():
         (config/'lua/plugins/theme.lua').unlink(missing_ok=True)
         (config/'lua/plugins/theme.lua').symlink_to(path)
         (current/'theme.name').write_text('neon-glow\n')
-        shutil.copy2(ROOT/'palettes/ruby-red/neovim.lua',path)
+        shutil.copy2(ROOT/'palettes/hot-coral/neovim.lua',path)
         env=os.environ|{'HOME':str(home),'XDG_CONFIG_HOME':str(home/'.config'),'XDG_DATA_HOME':str(home/'.local/share'),'XDG_STATE_HOME':str(home/'.local/state'),'XDG_CACHE_HOME':str(home/'.cache')}
         socket=home/'nvim.sock'
         with (home/'nvim.log').open('w') as log:
@@ -30,8 +30,10 @@ def main():
                 return json.loads(subprocess.check_output(['nvim','--server',str(socket),'--remote-expr','luaeval('+json.dumps(lua)+')'],env=env,text=True))
             try:
                 time.sleep(4)
-                assert query()['accent']=='#ff4d5b'
-                for slug,replace_dir,expected in [('blue',False,'#60ccff'),('orchid',True,'#e49aff'),('ruby-red',False,'#ff4d5b')]:
+                accents={slug: item['accent'] for slug,item in json.loads((ROOT/'palettes.json').read_text()).items()}
+                assert query()['accent']==accents['hot-coral']
+                for slug,replace_dir in [('cyberpunk',False),('orchid',True),('hot-coral',False)]:
+                    expected=accents[slug]
                     if replace_dir: shutil.rmtree(current/'theme'); (current/'theme').mkdir()
                     tmp=current/'theme/new.lua'; shutil.copy2(ROOT/'palettes'/slug/'neovim.lua',tmp); tmp.replace(path)
                     deadline=time.monotonic()+10

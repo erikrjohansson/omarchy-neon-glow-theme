@@ -5,6 +5,7 @@ import json
 import multiprocessing
 from pathlib import Path
 import queue
+import re
 import shutil
 import tempfile
 import time
@@ -34,8 +35,11 @@ class FollowerTests(unittest.TestCase):
             self.select(slug)
             self.assertTrue(self.follower.apply())
             self.assertTrue(self.follower.matches(slug))
+            # A logo wallpaper from before the wordmark-only update keeps its palette.
             count=len(self.calls)
-            self.select(slug,1)
+            logo=self.home/self.follower.manifest[slug]['backgrounds'][0].replace('-wordmark-','-logo-')
+            logo.touch(); link=self.current/'background'; link.unlink(); link.symlink_to(logo)
+            self.assertEqual(self.follower.desired()[0],slug)
             self.assertFalse(self.follower.apply())
             self.assertEqual(count,len(self.calls))
     def test_other_theme_is_untouched(self):
@@ -43,13 +47,13 @@ class FollowerTests(unittest.TestCase):
         self.assertFalse(self.follower.apply()); self.assertEqual(self.calls,[])
         self.assertFalse((self.current/'theme/colors.toml').exists())
     def test_restart_and_reapply(self):
-        self.select('cyberpunk'); self.follower.apply()
+        self.select('orchid'); self.follower.apply()
         replacement=module.Follower(home=self.home,root=ROOT,runtime=self.runtime,runner=lambda command: True)
-        self.assertEqual(replacement.desired()[0],'cyberpunk')
+        self.assertEqual(replacement.desired()[0],'orchid')
         self.assertFalse(replacement.apply())
         (self.current/'theme/colors.toml').write_text((ROOT/'colors.toml').read_text())
         self.assertTrue(replacement.apply())
-        self.assertEqual(json.loads(replacement.saved.read_text())['variant'],'cyberpunk')
+        self.assertEqual(json.loads(replacement.saved.read_text())['variant'],'orchid')
     def test_missing_or_unknown_wallpaper(self):
         self.assertFalse(self.follower.apply())
         (self.home/'custom.png').touch(); (self.current/'background').symlink_to(self.home/'custom.png')
@@ -66,8 +70,20 @@ class FollowerTests(unittest.TestCase):
                 self.assertEqual(self.follower.desired()[0], slug)
                 self.follower.apply()
                 self.assertTrue(self.follower.matches(slug))
+    def test_removed_sets_fall_back(self):
+        for name, slug in (('04-blue-logo-4k.png','cyberpunk'),('08-ultraviolet-wordmark-4k.png','orchid'),
+                           ('11-vaporwave-logo-no-floor-4k.png','orchid'),
+                           ('05-blue-yellow-wordmark-4k.png','red-white-blue'),
+                           ('10-ruby-red-wordmark-4k.png','hot-coral'),
+                           ('09-cyberpunk-wordmark-4k.png','cyberpunk')):
+            wallpaper = self.home/name
+            wallpaper.touch()
+            link = self.current/'background'
+            link.unlink(missing_ok=True)
+            link.symlink_to(wallpaper)
+            self.assertEqual(self.follower.desired()[0], slug, name)
     def test_selection_changed_while_waiting_for_lock(self):
-        self.select('blue')
+        self.select('gold')
         original=self.follower.desired
         count=0
         def desired():
@@ -133,7 +149,7 @@ class FollowerTests(unittest.TestCase):
         self.fail('Watcher keeps waking while idle')
 
     def test_notifications_switch_away_back_and_idle(self):
-        self.select('blue')
+        self.select('gold')
         (self.current/'theme.name').write_text('other')
         self.start_watcher()
         self.await_palette(None, False)
@@ -143,10 +159,10 @@ class FollowerTests(unittest.TestCase):
         replacement = self.current/'new-name'
         replacement.write_text('neon-glow')
         replacement.replace(self.current/'theme.name')
-        self.await_palette('blue')
+        self.await_palette('gold')
         self.assert_watcher_sleeps()
-        self.select('ruby-red')
-        self.await_palette('ruby-red')
+        self.select('hot-coral')
+        self.await_palette('hot-coral')
         (self.current/'theme.name').write_text('other')
         self.await_palette(None, False)
         before = (self.current/'theme/colors.toml').read_bytes()
@@ -189,17 +205,29 @@ class FollowerTests(unittest.TestCase):
             for p in palette.glob('*.toml'): tomllib.loads(p.read_text())
             for p in palette.glob('*.json'): json.loads(p.read_text())
             colors=tomllib.loads((palette/'colors.toml').read_text())
-            self.assertEqual(colors['background'], '#000000')
+            self.assertLess(lum(colors['background']),.01,(slug,'background'))
+            self.assertLessEqual(lum(colors['dark_background']),lum(colors['background']),(slug,'sidebar'))
             slots=('red','green','yellow','blue','magenta','cyan','bright_red','bright_green','bright_yellow','bright_blue','bright_magenta','bright_cyan')
-            if slug not in ('blue-yellow','cyberpunk','vaporwave','red-white-blue'):
-                def hue(color):
-                    return colorsys.rgb_to_hsv(*(int(color[i:i+2],16)/255 for i in (1,3,5)))[0]
-                for slot in slots:
-                    distance=abs(hue(colors[slot])-hue(colors['accent']))
-                    self.assertLess(min(distance,1-distance),.012,(slug,slot))
+            def hsv(color):
+                return colorsys.rgb_to_hsv(*(int(color[i:i+2],16)/255 for i in (1,3,5)))
+            # Readable text is near-neutral; the accent owns one terminal slot.
+            self.assertLess(hsv(colors['foreground'])[1],.12,(slug,'foreground'))
+            if hsv(colors['accent'])[1]>.25:
+                self.assertIn(colors['accent'],[colors[s] for s in (*slots,'orange')],slug)
+            # Errors stay red. Only the palette's own colours are strong; the
+            # other slots are soft tints, but none may turn grey or white.
+            red_hue=hsv(colors['red'])[0]
+            self.assertLess(min(red_hue,1-red_hue),.05,(slug,'red'))
+            for slot in slots:
+                self.assertGreater(hsv(colors[slot])[1],.04 if slot.startswith('bright_') else .08,(slug,slot))
             for key in ('foreground','accent','muted',*slots):
                 ratio=(lum(colors[key])+.05)/(lum(colors['background'])+.05)
                 self.assertGreaterEqual(ratio,4.5,(slug,key,ratio))
+            gtk=dict(re.findall(r'@define-color (\w+) (#[0-9a-fA-F]{6});',(palette/'gtk.css').read_text()))
+            ratio=(lum(gtk['foreground'])+.05)/(lum(gtk['error_red'])+.05)
+            self.assertGreaterEqual(ratio,4.5,(slug,'destructive button',ratio))
+            lock=tomllib.loads((palette/'shell.lock.toml').read_text())['lock']
+            self.assertLess(lum(lock['placeholder']),lum(lock['text']),(slug,'lock placeholder'))
             for p in palette.iterdir():
                 self.assertNotIn('{{ ',p.read_text(),p.name)
 

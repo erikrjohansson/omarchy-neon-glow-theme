@@ -42,7 +42,7 @@ def main():
         assert call('git','-C',str(installed),'status','--porcelain').stdout==before
         generated=home/'.local/state/neon-glow/palettes'
         manifest=json.loads((installed/'palettes.json').read_text())
-        assert len(list(generated.iterdir()))==12
+        assert len(list(generated.iterdir()))==7
         module_spec=importlib.util.spec_from_file_location('release_follower',installed/'integration/neon_glow.py')
         module=importlib.util.module_from_spec(module_spec); module_spec.loader.exec_module(module)
         follower=module.Follower(home=home,root=installed,runtime=runtime,runner=lambda command: True)
@@ -52,26 +52,26 @@ def main():
             link.symlink_to(installed/'backgrounds'/manifest[slug]['backgrounds'][0])
             assert follower.apply()
             assert follower.matches(slug)
-            assert tomllib.loads((follower.current/'theme/colors.toml').read_text())['background']=='#000000'
+            assert tomllib.loads((follower.current/'theme/colors.toml').read_text())['background']==tomllib.loads((installed/'palettes'/slug/'colors.toml').read_text())['background']
         initial_link=(follower.current/'background').readlink()
         call('bash',str(installed/'install.sh'),env=env)
         assert (follower.current/'background').readlink()==initial_link
         for p,data in sentinels.items(): assert p.read_bytes()==data
-        print('PASS: setup, all 12 generated palettes, idempotent reinstall, app config preservation',flush=True)
+        print('PASS: setup, all 7 generated palettes, idempotent reinstall, app config preservation',flush=True)
         # Template changes must be incorporated on reinstall without dirtying the repo.
         templates=home/'.config/omarchy/themed'; templates.mkdir(parents=True,exist_ok=True)
         (templates/'foot.ini.tpl').write_text('[colors]\nbackground={{ background_strip }}\nforeground={{ foreground_strip }}\n# local-template-test\n')
         call('bash',str(installed/'install.sh'),env=env)
-        assert 'local-template-test' in (generated/'ruby-red/foot.ini').read_text()
+        assert 'local-template-test' in (generated/'hot-coral/foot.ini').read_text()
         print('PASS: local user templates respected',flush=True)
         # A failed prepare must not stop a working service or discard valid palettes.
-        previous=(generated/'ruby-red/colors.toml').read_bytes()
+        previous=(generated/'hot-coral/colors.toml').read_bytes()
         manifest_path=installed/'palettes.json'
         original=manifest_path.read_bytes(); manifest_path.write_text('{"missing": {"backgrounds": ["missing.png"]}}')
         log_before=(home/'systemctl.log').read_text()
         failure=subprocess.run(['bash',str(installed/'install.sh')],env=env,capture_output=True)
         assert failure.returncode!=0
-        assert (generated/'ruby-red/colors.toml').read_bytes()==previous
+        assert (generated/'hot-coral/colors.toml').read_bytes()==previous
         assert '--user stop' not in (home/'systemctl.log').read_text()[len(log_before):]
         manifest_path.write_bytes(original)
         print('PASS: invalid update leaves working installation intact',flush=True)

@@ -120,6 +120,11 @@ class ChangeWatcher:
     def close(self):
         os.close(self.fd)
 
+REMOVED = {'04-blue': 'cyberpunk', '05-blue-yellow': 'red-white-blue',
+           '08-ultraviolet': 'orchid', '10-ruby-red': 'hot-coral', '11-vaporwave': 'orchid',
+           # Renamed so Cyberpunk is the first wallpaper.
+           '09-cyberpunk': 'cyberpunk'}
+
 class Follower:
     def __init__(self, home=None, root=ROOT, runtime=None, runner=None):
         self.home = Path(home or Path.home())
@@ -132,6 +137,14 @@ class Follower:
         self.runner = runner or self.run
         self.manifest = json.loads((self.root / 'palettes.json').read_text())
         self.mapping = {name: slug for slug, item in self.manifest.items() for name in item['backgrounds']}
+        # The logo wallpapers were removed; one still selected keeps its palette.
+        self.mapping.update({name.replace('-wordmark-', '-logo-'): slug for name, slug in list(self.mapping.items())})
+        # Removed sets: a wallpaper still selected from
+        # them gets the nearest remaining palette.
+        for old, new in REMOVED.items():
+            if new in self.manifest:
+                for design in ('logo', 'wordmark'):
+                    self.mapping.setdefault(f'{old}-{design}-4k.png', new)
         # Existing Omarchy sessions can retain staged wallpapers from before
         # the filename cleanup until the theme is applied again.
         self.mapping.update({name.replace('-4k.png', '-no-floor-4k.png').replace('12-red-white-blue-', '12-us-'): slug

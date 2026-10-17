@@ -3,10 +3,10 @@
 # themes/<name>/shell.toml to replace this generated file.
 
 [bar]
-background = "#000000"
-background-alpha = 1.0
-text = "#8bc4ff"
-active = "#71b7ff"
+background = "#091017"
+background-alpha = 0.98
+text = "#c8cbce"
+active = "#7dbdfe"
 scale-with-font = true
 size-horizontal = 26
 size-vertical = 28
@@ -14,32 +14,32 @@ size-vertical = 28
 # Shared Hyprland-derived border tokens. Surface sections reference these so
 # lock, notifications, popups, and menu-style cards stay aligned with the
 # current Hyprland active-border gradient.
-active-border            = "#71b7ff #f5f7ff #ff7184 45deg"
-active-border-foreground = "#71b7ff #f5f7ff #ff7184 45deg"
+active-border            = "rgba(954f5aee) rgba(4f78a2ee) 45deg"
+active-border-foreground = "rgba(954f5aee) rgba(4f78a2ee) 45deg"
 
 [controls]
 
-normal-color        = "#8bc4ff"
+normal-color        = "#c8cbce"
 normal-fill-alpha   = 0.04
-normal-border       = "#d7ebff"
+normal-border       = "#c8cbce"
 normal-border-width = 1
 normal-border-alpha = 0.4
 
-hover-cursor-color        = "#8bc4ff"
+hover-cursor-color        = "#7dbdfe"
 hover-cursor-fill-alpha   = 0.08
-hover-cursor-border       = "#d7ebff"
+hover-cursor-border       = "#c8cbce"
 hover-cursor-border-width = 1
 hover-cursor-border-alpha = 0.5
 
-focus-color        = "#8bc4ff"
+focus-color        = "#7dbdfe"
 focus-fill-alpha   = 0.08
-focus-border       = "#71b7ff"
+focus-border       = "#7dbdfe"
 focus-border-width = 1
 focus-border-alpha = 0.65
 
-selected-color        = "#8bc4ff"
+selected-color        = "#7dbdfe"
 selected-fill-alpha   = 0.18
-selected-border       = "#d7ebff"
+selected-border       = "#c8cbce"
 selected-border-width = 0
 selected-border-alpha = 1.0
 
@@ -101,82 +101,82 @@ base-size = 12
 # icon-large    = 18
 
 [popups]
-background       = "#000000"
-background-alpha = 1.0
-text             = "#8bc4ff"
+background       = "#091017"
+background-alpha = 0.95
+text             = "#c8cbce"
 border           = "hyprland.active-border"
 border-alpha     = 1.0
 [tooltip]
-background       = "#000000"
-background-alpha = 1.0
-text             = "#8bc4ff"
+background       = "#091017"
+background-alpha = 0.95
+text             = "#c8cbce"
 border           = "hyprland.active-border-foreground"
 border-alpha     = 1.0
 [notifications]
-background       = "#000000"
+background       = "#091017"
 background-alpha = 1.0
-text             = "#d7ebff"
+text             = "#c8cbce"
 # Conventionally matches the Hyprland active-window border. Border accepts
 # either a solid color or the full active-border gradient.
 border           = "hyprland.active-border"
 border-alpha     = 1.0
 # border-width     = 2
-countdown        = "#71b7ff"
+countdown        = "#7dbdfe"
 
 [launcher]
-background                = "#000000"
-background-alpha          = 1.0
-text                      = "#8bc4ff"
+background                = "#091017"
+background-alpha          = 0.95
+text                      = "#c8cbce"
 border                    = "hyprland.active-border-foreground"
 border-alpha              = 1.0
-scrim                     = "#0a0a0a"
+scrim                     = "#131a20"
 scrim-alpha               = 0.5
-selected-background       = "#71b7ff"
-selected-background-alpha = 0.08
-selected-text             = "#71b7ff"
-selected-border           = "hyprland.active-border-foreground"
-selected-border-alpha     = 0.25
+selected-background       = "#7dbdfe"
+selected-background-alpha = 0.18
+selected-text             = "#7dbdfe"
+selected-border           = "#7dbdfe"
+selected-border-alpha     = 0.5
 [menu]
-background                = "#000000"
-background-alpha          = 1.0
-text                      = "#8bc4ff"
+background                = "#091017"
+background-alpha          = 0.95
+text                      = "#c8cbce"
 border                    = "hyprland.active-border-foreground"
 border-alpha              = 1.0
-scrim                     = "#0a0a0a"
+scrim                     = "#131a20"
 scrim-alpha               = 0.5
-selected-background       = "#71b7ff"
-selected-background-alpha = 0.08
-selected-text             = "#71b7ff"
-selected-border           = "hyprland.active-border-foreground"
-selected-border-alpha     = 0.25
+selected-background       = "#7dbdfe"
+selected-background-alpha = 0.18
+selected-text             = "#7dbdfe"
+selected-border           = "#7dbdfe"
+selected-border-alpha     = 0.5
 [polkit]
-background       = "#000000"
-background-alpha = 1.0
-text             = "#8bc4ff"
-text-error       = "#ff8293"
+background       = "#091017"
+background-alpha = 0.95
+text             = "#c8cbce"
+text-error       = "#eb817f"
 border           = "hyprland.active-border"
-border-error     = "#ff8293"
+border-error     = "#eb817f"
 border-alpha     = 1.0
-scrim            = "#000000"
+scrim            = "#091017"
 scrim-alpha      = 0.5
-accent           = "#71b7ff"
+accent           = "#7dbdfe"
 [lock]
-background       = "#000000"
-background-alpha = 1.0
-text             = "#8bc4ff"
-placeholder      = "#c7e3ff"
-text-error       = "#ff8293"
+background       = "#091017"
+background-alpha = 0.95
+text             = "#c8cbce"
+placeholder      = "#707d8c"
+text-error       = "#eb817f"
 border           = "hyprland.active-border"
 border-active    = "hyprland.active-border"
-border-error     = "#ff8293"
+border-error     = "#eb817f"
 border-alpha     = 1.0
-selection        = "#71b7ff"
+selection        = "#7dbdfe"
 selection-alpha  = 0.45
 [image-picker]
-scrim                   = "#000000"
+scrim                   = "#091017"
 scrim-alpha             = 0.5
-text                    = "#8bc4ff"
-selected-border         = "#71b7ff"
+text                    = "#c8cbce"
+selected-border         = "#7dbdfe"
 selected-border-alpha   = 1.0
-unselected-border       = "#d7ebff"
+unselected-border       = "#c8cbce"
 unselected-border-alpha = 0.28

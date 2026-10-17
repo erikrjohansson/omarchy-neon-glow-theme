@@ -1,93 +1,93 @@
 # Main background, empty for terminal default, need to be empty if you want transparent background
-theme[main_bg]="#000000"
+theme[main_bg]="#130d15"
 
 # Main text color
-theme[main_fg]="#f7e3ff"
+theme[main_fg]="#ccc9cd"
 
 # Title color for boxes
-theme[title]="#f7e3ff"
+theme[title]="#ccc9cd"
 
 # Highlight color for keyboard shortcuts
-theme[hi_fg]="#e49aff"
+theme[hi_fg]="#dd97f7"
 
 # Background color of selected item in processes box
-theme[selected_bg]="#402b47"
+theme[selected_bg]="#4c3454"
 
 # Foreground color of selected item in processes box
-theme[selected_fg]="#e49aff"
+theme[selected_fg]="#dd97f7"
 
 # Color of inactive/disabled text
-theme[inactive_fg]="#9a8ca0"
+theme[inactive_fg]="#837787"
 
 # Color of text appearing on top of graphs, i.e uptime and current network graph scaling
-theme[graph_text]="#efc4ff"
+theme[graph_text]="#b3b0b4"
 
 # Background color of the percentage meters
-theme[meter_bg]="#402b47"
+theme[meter_bg]="#4c3454"
 
 # Misc colors for processes box including mini cpu graphs, details memory graph and details status text
-theme[proc_misc]="#efc4ff"
+theme[proc_misc]="#b3b0b4"
 
 # CPU, Memory, Network, Proc box outline colors
-theme[cpu_box]="#eebeff"
-theme[mem_box]="#e49aff"
-theme[net_box]="#e7a6ff"
-theme[proc_box]="#e49aff"
+theme[cpu_box]="#cd9cce"
+theme[mem_box]="#abc2b0"
+theme[net_box]="#eb817f"
+theme[proc_box]="#dd97f7"
 
 # Box divider line and small boxes line color
-theme[div_line]="#9a8ca0"
+theme[div_line]="#837787"
 
 # Temperature graph color (Green -> Yellow -> Red)
-theme[temp_start]="#e49aff"
-theme[temp_mid]="#ecb6ff"
-theme[temp_end]="#e7a6ff"
+theme[temp_start]="#abc2b0"
+theme[temp_mid]="#e6d17f"
+theme[temp_end]="#eb817f"
 
 # CPU graph colors (Teal -> Blue -> Magenta)
-theme[cpu_start]="#f1caff"
-theme[cpu_mid]="#e9acff"
-theme[cpu_end]="#eebeff"
+theme[cpu_start]="#92c2db"
+theme[cpu_mid]="#97a3da"
+theme[cpu_end]="#cd9cce"
 
 # Mem/Disk free meter
-theme[free_start]="#eebeff"
-theme[free_mid]="#e9acff"
-theme[free_end]="#f1caff"
+theme[free_start]="#cd9cce"
+theme[free_mid]="#97a3da"
+theme[free_end]="#92c2db"
 
 # Mem/Disk cached meter
-theme[cached_start]="#e9acff"
-theme[cached_mid]="#f1caff"
-theme[cached_end]="#eebeff"
+theme[cached_start]="#97a3da"
+theme[cached_mid]="#92c2db"
+theme[cached_end]="#cd9cce"
 
 # Mem/Disk available meter
-theme[available_start]="#ecb6ff"
-theme[available_mid]="#e7a6ff"
-theme[available_end]="#e7a6ff"
+theme[available_start]="#e6d17f"
+theme[available_mid]="#eb817f"
+theme[available_end]="#eb817f"
 
 # Mem/Disk used meter (Green -> Teal -> Blue)
-theme[used_start]="#e49aff"
-theme[used_mid]="#f1caff"
-theme[used_end]="#e9acff"
+theme[used_start]="#abc2b0"
+theme[used_mid]="#92c2db"
+theme[used_end]="#97a3da"
 
 # Download graph colors
-theme[download_start]="#ecb6ff"
-theme[download_mid]="#e7a6ff"
-theme[download_end]="#e7a6ff"
+theme[download_start]="#e6d17f"
+theme[download_mid]="#eb817f"
+theme[download_end]="#eb817f"
 
 # Upload graph colors (Green -> Teal -> Blue)
-theme[upload_start]="#e49aff"
-theme[upload_mid]="#f1caff"
-theme[upload_end]="#e9acff"
+theme[upload_start]="#abc2b0"
+theme[upload_mid]="#92c2db"
+theme[upload_end]="#97a3da"
 
 # Process box color gradient for threads, mem and cpu usage
-theme[process_start]="#f1caff"
-theme[process_mid]="#e9acff"
-theme[process_end]="#eebeff"
+theme[process_start]="#92c2db"
+theme[process_mid]="#97a3da"
+theme[process_end]="#cd9cce"
 
 # Graph gradient colors (spectrum shades from background to foreground)
-theme[gradient_color_0]="#000000"
-theme[gradient_color_1]="#141414"
-theme[gradient_color_2]="#402b47"
-theme[gradient_color_3]="#9a8ca0"
-theme[gradient_color_4]="#a48dac"
-theme[gradient_color_5]="#f7e3ff"
-theme[gradient_color_6]="#efc4ff"
-theme[gradient_color_7]="#fcf5ff"
+theme[gradient_color_0]="#130d15"
+theme[gradient_color_1]="#201a23"
+theme[gradient_color_2]="#4c3454"
+theme[gradient_color_3]="#837787"
+theme[gradient_color_4]="#8b878d"
+theme[gradient_color_5]="#ccc9cd"
+theme[gradient_color_6]="#b3b0b4"
+theme[gradient_color_7]="#e2e0e3"

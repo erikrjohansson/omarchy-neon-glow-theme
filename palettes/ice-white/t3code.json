@@ -1,36 +1,36 @@
 {
   "name": "Omarchy",
   "appearance": "dark",
-  "canvas": "#000000",
-  "accent": "#e4f1ff",
+  "canvas": "#0c1014",
+  "accent": "#83bdf8",
   "colors": {
-    "chrome": "#000000",
-    "toolbar": "#000000",
-    "toolbarForeground": "#f7fbff",
-    "toolbarBorder": "#9a9da0",
+    "chrome": "#0c1014",
+    "toolbar": "#0c1014",
+    "toolbarForeground": "#c8cbce",
+    "toolbarBorder": "#737d88",
 
-    "text": "#f7fbff",
-    "border": "#9a9da0",
-    "focus": "#e4f1ff",
+    "text": "#c8cbce",
+    "border": "#737d88",
+    "focus": "#83bdf8",
 
-    "sidebar": "#000000",
-    "sidebarForeground": "#f7fbff",
-    "sidebarBorder": "#9a9da0",
-    "sidebarRowHover": "#0f0f0f",
-    "sidebarRowActive": "#292b2e",
-    "sidebarRowSelected": "#404347",
+    "sidebar": "#090c0f",
+    "sidebarForeground": "#c8cbce",
+    "sidebarBorder": "#737d88",
+    "sidebarRowHover": "#14171a",
+    "sidebarRowActive": "#1f2c39",
+    "sidebarRowSelected": "#2d4054",
 
-    "error": "#edf6ff",
-    "warning": "#f0f7ff",
+    "error": "#d2a3a2",
+    "warning": "#d8cfac",
 
-    "codeBackground": "#000000",
-    "codeForeground": "#f7fbff",
+    "codeBackground": "#090c0f",
+    "codeForeground": "#c8cbce",
 
-    "terminalBackground": "#000000",
-    "terminalForeground": "#f7fbff",
-    "terminalCursor": "#fcfeff",
-    "terminalSelection": "#404347",
-    "terminalScrollbar": "#9a9da0",
-    "terminalScrollbarHover": "#a4a7ac"
+    "terminalBackground": "#0c1014",
+    "terminalForeground": "#c8cbce",
+    "terminalCursor": "#dfe1e4",
+    "terminalSelection": "#2d4054",
+    "terminalScrollbar": "#737d88",
+    "terminalScrollbarHover": "#868a8d"
   }
 }
