@@ -1,7 +1,7 @@
 [lock]
 background       = "#010501"
-background-alpha = 1.0
-text             = "#b9eda8"
+background-alpha = 0.95
+text             = "#e0eddf"
 placeholder      = "#949e94"
 text-error       = "#f08080"
 border           = "hyprland.active-border"
